@@ -36,7 +36,7 @@ app.get('/todos',(req,res)=>{
     (e)=>{
         if(e)
             res.status(400).send(e);
-    }
+    };
 })
 
 
