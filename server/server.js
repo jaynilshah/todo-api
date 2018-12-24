@@ -1,4 +1,5 @@
 var {mongoose} = require('./db/mongoose.js');
+var {ObjectID} = require('mongodb');
 
 var {Todo} = require('./models/todo');
 var {User} = require('./models/user');
@@ -39,6 +40,21 @@ app.get('/todos',(req,res)=>{
     };
 })
 
+app.get('/todos/:id',(req,res)=>{
+    var id = req.params.id;
+    if(!ObjectID.isValid(id))
+        return res.status(404).send();
+
+    Todo.findById(id).then((todos)=>{
+        if(!todos)
+            return res.status(404).send();   
+        
+        res.send({todos}); 
+
+    },(e)=>{
+        res.status(400).send();
+    });
+})
 
 module.exports = {
     app
