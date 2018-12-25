@@ -6,6 +6,16 @@ const {User} = require('./../server/models/user');
 // var id = '15c211ef55927731d313932f8';
 
 
+
+const todos = [{
+    _id: new ObjectID(),
+    text : 'First test Todo'
+},{
+    _id: new ObjectID(),
+    text: 'Seconf test Todo'
+}]
+
+
 // Todo.find({
 //     _id: id
 // }).then((todos)=>{
@@ -31,14 +41,19 @@ const {User} = require('./../server/models/user');
 //     console.log(todos);
 // });
 
-User.findById('5c1ff4c7a335170c4f14264d').then((user)=>{
+Todo.insertMany(todos).then();
 
 
-    if(!user)
-        return console.log('USer not found');
 
-    console.log(JSON.stringify(user,undefined,2));
 
-},(e)=>{
-    console.log(e)}
-    );
+// User.findById('5c1ff4c7a335170c4f14264d').then((user)=>{
+
+
+//     if(!user)
+//         return console.log('USer not found');
+
+//     console.log(JSON.stringify(user,undefined,2));
+
+// },(e)=>{
+//     console.log(e)}
+//     );
