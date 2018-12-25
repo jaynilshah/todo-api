@@ -63,11 +63,11 @@ app.delete('/todos/:id',(req,res)=>{
     if(!ObjectID.isValid(id))
         return res.status(404).send();
 
-    Todo.findByIdAndRemove(id).then((todo)=>{
-        if(!todo)
+    Todo.findByIdAndRemove(id).then((todos)=>{
+        if(!todos)
             return res.status(404).send();
 
-        res.send({todo});
+        res.send({todos});
     },(e)=>{
         res.status(400).send();
     });
